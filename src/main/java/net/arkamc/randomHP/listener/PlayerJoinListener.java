@@ -16,7 +16,7 @@ public class PlayerJoinListener implements Listener {
 
         if (task.randomHPTask == null) {
             player.setMaxHealth(20);
-            player.setHealth(event.getPlayer().getMaxHealth());
+            player.setHealth(20.0);
         }
     }
 }
