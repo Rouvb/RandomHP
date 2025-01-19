@@ -1,0 +1,26 @@
+package net.arkamc.randomHP;
+
+import lombok.Getter;
+import me.gleeming.command.CommandHandler;
+import net.arkamc.randomHP.commands.RandomHPCommand;
+import org.bukkit.plugin.java.JavaPlugin;
+
+@Getter
+public final class RandomHP extends JavaPlugin {
+
+    @Getter
+    private static RandomHP instance;
+
+
+    @Override
+    public void onEnable() {
+        instance = this;
+        this.saveDefaultConfig();
+        CommandHandler.registerCommands(RandomHPCommand.class, this);
+    }
+
+    @Override
+    public void onDisable() {
+        // Plugin shutdown logic
+    }
+}

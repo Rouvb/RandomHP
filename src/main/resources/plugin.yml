@@ -1,0 +1,6 @@
+name: RandomHP
+version: '1.0-SNAPSHOT'
+main: net.arkamc.randomHP.RandomHP
+api-version: '1.19'
+authors: [ Rouvb ]
+description: '랜덤 체력 플러그인'
