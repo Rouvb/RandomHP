@@ -14,7 +14,7 @@ public class RandomHPCommand {
     @Command(names = {"randomhp start"}, permission = "randomhp.admin")
     public void randomHPStart(CommandSender sender) {
         if (task.randomHPTask != null && !task.getRandomHPTask().isCancelled()) {
-            sender.sendMessage("&c이미 랜덤 체력 타이머가 실행 중입니다.");
+            sender.sendMessage(CC.translate("&c이미 랜덤 체력 타이머가 실행 중입니다."));
             return;
         }
 
