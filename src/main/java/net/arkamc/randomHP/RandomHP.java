@@ -12,11 +12,12 @@ public final class RandomHP extends JavaPlugin {
     @Getter
     private static RandomHP instance;
 
-
     @Override
     public void onEnable() {
         instance = this;
         this.saveDefaultConfig();
+        this.getConfig().set("TIMER_STARTED", false);
+        this.saveConfig();
         this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         CommandHandler.registerCommands(RandomHPCommand.class, this);
     }

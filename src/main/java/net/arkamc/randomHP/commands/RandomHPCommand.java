@@ -13,24 +13,26 @@ public class RandomHPCommand {
 
     @Command(names = {"randomhp start"}, permission = "randomhp.admin")
     public void randomHPStart(CommandSender sender) {
-        if (task.randomHPTask != null && !task.getRandomHPTask().isCancelled()) {
+        if (plugin.getConfig().getBoolean("TIMER_STARTED")) {
             sender.sendMessage(CC.translate("&c이미 랜덤 체력 타이머가 실행 중입니다."));
             return;
         }
 
+        toggleTimer();
         sender.sendMessage(CC.translate("&a랜덤 체력 타이머가 시작되었습니다."));
         task.startRandomHPTask();
     }
 
     @Command(names = {"randomhp stop"}, permission = "randomhp.admin")
     public void randomHPStop(CommandSender sender) {
-        if (task.randomHPTask != null) {
-            task.getRandomHPTask().cancel();
-            task.randomHPTask = null;
-            sender.sendMessage(CC.translate("&a랜덤 체력 타이머가 종료되었습니다."));
-        } else {
+        if (!plugin.getConfig().getBoolean("TIMER_STARTED")) {
             sender.sendMessage(CC.translate("&c현재 타이머가 작동 중이지 않습니다."));
+            return;
         }
+
+        task.getRandomHPTask().cancel();
+        toggleTimer();
+        sender.sendMessage(CC.translate("&a랜덤 체력 타이머가 종료되었습니다."));
     }
 
     @Command(names = {"randomhp reload"}, permission = "randomhp.admin")
@@ -44,5 +46,11 @@ public class RandomHPCommand {
         plugin.getConfig().set("TIMER", timer);
         plugin.saveConfig();
         sender.sendMessage(CC.translate("&a[RandomHP] 타이머를 " + timer + "초로 설정 하였습니다."));
+    }
+
+    private void toggleTimer() {
+        boolean timerStarted = plugin.getConfig().getBoolean("TIMER_STARTED");
+        plugin.getConfig().set("TIMER_STARTED", !timerStarted);
+        plugin.saveConfig();
     }
 }
