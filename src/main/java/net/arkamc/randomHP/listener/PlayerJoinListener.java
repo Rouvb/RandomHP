@@ -1,6 +1,5 @@
 package net.arkamc.randomHP.listener;
 
-import net.arkamc.randomHP.commands.RandomHPCommand;
 import net.arkamc.randomHP.task.RandomHPTask;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

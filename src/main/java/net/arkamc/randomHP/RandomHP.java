@@ -3,6 +3,7 @@ package net.arkamc.randomHP;
 import lombok.Getter;
 import me.gleeming.command.CommandHandler;
 import net.arkamc.randomHP.commands.RandomHPCommand;
+import net.arkamc.randomHP.listener.PlayerJoinListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
@@ -16,6 +17,7 @@ public final class RandomHP extends JavaPlugin {
     public void onEnable() {
         instance = this;
         this.saveDefaultConfig();
+        this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         CommandHandler.registerCommands(RandomHPCommand.class, this);
     }
 
