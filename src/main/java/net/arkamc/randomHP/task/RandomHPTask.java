@@ -8,8 +8,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.Random;
-
 @Getter
 public class RandomHPTask {
     private RandomHP plugin = RandomHP.getInstance();
